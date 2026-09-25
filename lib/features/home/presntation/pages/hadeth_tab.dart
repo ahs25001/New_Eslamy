@@ -5,11 +5,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:new_islamy/features/home/presntation/cubit/home_cubit.dart';
 import 'package:new_islamy/features/home/presntation/cubit/home_cubit.dart';
 
+import '../../../../core/utils/app_pathes.dart';
+import '../../../../core/utils/app_sheared_widgets.dart';
 import '../../../../style/app_colors.dart';
 import '../../../../style/app_text_styles.dart';
-import '../../../../utils/app_pathes.dart';
-import '../../../../utils/app_sheared_widgets.dart';
-import '../../../../utils/app_strings.dart';
 import '../widgets/hadeth_card.dart';
 
 class HadethTab extends StatelessWidget {

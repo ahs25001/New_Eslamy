@@ -1,50 +1,54 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:new_islamy/features/home/presntation/data/models/sura_model.dart';
+import 'package:new_islamy/style/app_text_styles.dart';
 
+import '../../../../core/utils/app_pathes.dart';
 import '../../../../style/app_colors.dart';
-import '../../../../utils/app_pathes.dart';
-
 class MoreRecentlyListItem extends StatelessWidget {
-  final int index ;
+  final SuraModel suraModel ;
 
-  const MoreRecentlyListItem({super.key,required  this.index});
+  const MoreRecentlyListItem({super.key,required  this.suraModel});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 283.w,
-      padding: EdgeInsets.symmetric(
-        horizontal: 10.w,
-        vertical: 10.h,
-      ),
-      margin: EdgeInsets.symmetric(horizontal: 10.w),
-      decoration: BoxDecoration(
-        color: AppColors.gold,
-        borderRadius: BorderRadius.circular(20.r),
-      ),
-      child: Row(
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text("Sura name"),
-              SizedBox(height: 10.h),
-              Text("اسم السورة"),
-              SizedBox(height: 10.h),
-              Text("123456"),
-            ],
-          ),
-          Spacer(),
-          Image.asset(
-            AppPathies.suraImage,
-            width: 153.w,
-            height: 136.h,
-          ),
-        ],
-      ),
-    ).fadeInLeft();
+    return AspectRatio(
+      aspectRatio: 380/160,
+      child: Container(
+        padding: EdgeInsets.symmetric(
+          horizontal: 20.w,
+          vertical: 10.h,
+        ),
+        margin: EdgeInsets.symmetric(horizontal: 10.w),
+        decoration: BoxDecoration(
+          color: AppColors.gold,
+          borderRadius: BorderRadius.circular(20.r),
+        ),
+        child: Row(
+          mainAxisAlignment: .spaceBetween,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              spacing: 10.h,
+              children: [
+                Text(suraModel.suraNameEnglish,style: AppTextStyles.hadethCardTitleStyle,),
+                Text(suraModel.suraName,style: AppTextStyles.hadethCardTitleStyle,),
+                Text("${suraModel.suraAyatNumber}  Verses",style: AppTextStyles.selectedTabTextStyle,),
+              ],
+            ),
+            // Spacer(),
+            Image.asset(
+              AppPathies.suraImage,
+              width: 153.w,
+              height: 136.h,
+            ),
+          ],
+        ),
+      ).fadeInLeft(),
+    );
   }
 
 }

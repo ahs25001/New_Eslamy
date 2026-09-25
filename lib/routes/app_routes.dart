@@ -6,14 +6,18 @@ import '../features/on_boarding/presentation/pages/on_boarding_screen.dart';
 import '../features/sura_detials/presntation/pages/sura_details_screen.dart';
 abstract class AppRoutes {
   static const String home = '/';
-  static const String onBoarding = '/d';
+  static const String onBoarding = '/f';
   static const String suraDetails = '/suraDetails';
   static const String hadethDetails = '/hadethDetails';
 }
 class Rotes {
   static MaterialPageRoute<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
+
+
+      
       case AppRoutes.home:
+
         return MaterialPageRoute(builder: (context) => const HomeScreen());
       case AppRoutes.onBoarding:
         return MaterialPageRoute(

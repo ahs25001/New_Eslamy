@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/utils/app_pathes.dart';
 import '../../../../style/app_colors.dart';
-import '../../../../utils/app_pathes.dart';
 
 class AudioItem extends StatelessWidget {
   const AudioItem({super.key});

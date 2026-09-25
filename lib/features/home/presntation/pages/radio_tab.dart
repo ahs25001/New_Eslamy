@@ -3,9 +3,8 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:new_islamy/style/app_text_styles.dart';
-import 'package:new_islamy/utils/app_pathes.dart';
-import 'package:new_islamy/utils/app_sheared_widgets.dart';
-
+import '../../../../core/utils/app_pathes.dart';
+import '../../../../core/utils/app_sheared_widgets.dart';
 import '../../../../style/app_colors.dart';
 import '../widgets/audio_item.dart';
 import '../widgets/souund_wave_widget.dart';
