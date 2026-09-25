@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:new_islamy/features/home/presntation/pages/hadeth_tab.dart';
 
-import '../features/home/presntation/pages/sebha_tap.dart';
-import '../features/home/presntation/pages/time_tab.dart';
-import '../features/on_boarding/presentation/pages/on_boarding_page.dart';
-import '../features/home/presntation/pages/quran_tab.dart';
-import '../features/home/presntation/pages/radio_tab.dart';
-
+import '../../features/home/presntation/pages/quran_tab.dart';
+import '../../features/home/presntation/pages/radio_tab.dart';
+import '../../features/home/presntation/pages/sebha_tap.dart';
+import '../../features/home/presntation/pages/time_tab.dart';
+import '../../features/on_boarding/presentation/pages/on_boarding_page.dart';
 import 'app_pathes.dart';
 
 List<Widget> onBoardingPages = [

@@ -9,9 +9,11 @@ class HomeState {
   int? sebhaCount;
   int? tasbehIndex ;
   List<String>? suraPages;
+  List<SuraModel>?mostRecently;
   HomeState({
     this.homeStatus,
     this.currentTab,
+    this.mostRecently,
     this.suraPages,
     this.hadeths,
     this.sebhaCount,
@@ -19,6 +21,7 @@ class HomeState {
   });
   HomeState copyWith({
     HomeStatus? homeStatus,
+    List<SuraModel>? mostRecently,
     List<String>? hadeths,
     int? sebhaCount,
     int? tasbehIndex,
@@ -28,6 +31,7 @@ class HomeState {
     currentTab: currentTab ?? this.currentTab,
     suraPages: suraPages ?? this.suraPages,
     sebhaCount: sebhaCount ?? this.sebhaCount,
+    mostRecently: mostRecently ?? this.mostRecently,
     tasbehIndex: tasbehIndex ?? this.tasbehIndex,
     hadeths: hadeths ?? this.hadeths,
     homeStatus: homeStatus ?? this.homeStatus,
@@ -35,5 +39,5 @@ class HomeState {
 }
 
 final class HomeInitial extends HomeState {
-  HomeInitial() : super(homeStatus: HomeStatus.initial, currentTab: 0,sebhaCount: 0,hadeths: [],tasbehIndex: 0);
+  HomeInitial() : super(homeStatus: HomeStatus.initial, mostRecently: [],currentTab: 0,sebhaCount: 0,hadeths: [],tasbehIndex: 0);
 }

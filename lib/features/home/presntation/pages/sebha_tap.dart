@@ -6,12 +6,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:new_islamy/features/home/presntation/cubit/home_cubit.dart';
 import 'package:new_islamy/style/app_text_styles.dart';
-import 'package:new_islamy/utils/app_constants.dart';
-import 'package:new_islamy/utils/app_pathes.dart';
-
+import '../../../../core/utils/app_constants.dart';
+import '../../../../core/utils/app_pathes.dart';
+import '../../../../core/utils/app_sheared_widgets.dart';
 import '../../../../style/app_colors.dart';
-import '../../../../utils/app_sheared_widgets.dart';
-
 class SebhaTap extends StatelessWidget {
   const SebhaTap({super.key});
 
