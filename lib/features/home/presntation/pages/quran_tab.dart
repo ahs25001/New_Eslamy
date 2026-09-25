@@ -3,14 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:new_islamy/features/home/presntation/cubit/home_cubit.dart';
 import 'package:new_islamy/features/home/presntation/widgets/sura_list_tile.dart';
-import 'package:new_islamy/utils/app_pathes.dart';
 
+import '../../../../core/utils/app_constants.dart';
+import '../../../../core/utils/app_pathes.dart';
+import '../../../../core/utils/app_sheared_widgets.dart';
+import '../../../../core/utils/app_strings.dart';
 import '../../../../routes/app_routes.dart';
 import '../../../../style/app_colors.dart';
 import '../../../../style/app_text_styles.dart';
-import '../../../../utils/app_constants.dart';
-import '../../../../utils/app_sheared_widgets.dart';
-import '../../../../utils/app_strings.dart';
+import '../data/models/sura_model.dart';
 import '../widgets/more_recently_list_item.dart';
 
 class QuranTab extends StatelessWidget {
@@ -77,25 +78,58 @@ class QuranTab extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20.h),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: Align(
-                alignment: Alignment.topLeft,
-                child: Text(
-                  AppStrings.mostRecently,
-                  style: AppTextStyles.subTitleStyle,
-                ),
-              ),
-            ),
-            SizedBox(height: 20.h),
-            SizedBox(
-              height: 150.h,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: 10,
-                itemBuilder: (context, index) =>
-                    MoreRecentlyListItem(index: index),
-              ),
+            BlocSelector<HomeCubit, HomeState, List<SuraModel>>(
+              selector: (state) {
+                return state.mostRecently!;
+              },
+              builder: (context, state) {
+                return Visibility(
+                  visible: state.isNotEmpty,
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20.w),
+                        child: Align(
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            AppStrings.mostRecently,
+                            style: AppTextStyles.subTitleStyle,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 20.h),
+                      SizedBox(
+                        height: 150.h,
+                        child: BlocBuilder<HomeCubit, HomeState>(
+                          builder: (context, state) {
+                            return ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: state.mostRecently?.length ?? 0,
+                              itemBuilder: (context, index) => InkWell(
+                                onTap: () {
+                                  context
+                                      .read<HomeCubit>()
+                                      .addSuraToMostRecently(
+                                        state.mostRecently![index].index,
+                                      );
+                                  Navigator.pushNamed(
+                                    context,
+                                    AppRoutes.suraDetails,
+                                    arguments: state.mostRecently![index].index,
+                                  );
+                                },
+                                child: MoreRecentlyListItem(
+                                  suraModel: state.mostRecently![index],
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
             ),
             SizedBox(height: 20.h),
             Padding(
@@ -117,7 +151,9 @@ class QuranTab extends StatelessWidget {
                     builder: (context, state) {
                       return InkWell(
                         onTap: () {
-                          print(state.suraPages);
+                          context.read<HomeCubit>().addSuraToMostRecently(
+                            index,
+                          );
                           Navigator.pushNamed(
                             context,
                             AppRoutes.suraDetails,
@@ -125,10 +161,12 @@ class QuranTab extends StatelessWidget {
                           );
                         },
                         child: SuraListTile(
-                          index: index + 1,
-                          suraAyatNumber: ayaNumberList[index],
-                          suraName: arabicQuranSuras[index],
-                          suraNameEnglish: englishQuranSurahs[index],
+                          suraModel: SuraModel(
+                            index: index + 1,
+                            suraAyatNumber: ayaNumberList[index],
+                            suraName: arabicQuranSuras[index],
+                            suraNameEnglish: englishQuranSurahs[index],
+                          ),
                         ),
                       );
                     },

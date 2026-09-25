@@ -4,11 +4,12 @@ import 'package:new_islamy/features/on_boarding/presentation/cubit/on_boarding_c
 import 'package:new_islamy/routes/app_routes.dart';
 import 'package:new_islamy/style/app_colors.dart';
 import 'package:new_islamy/style/app_text_styles.dart';
-import 'package:new_islamy/utils/app_constants.dart';
-import 'package:new_islamy/utils/app_pathes.dart';
-import 'package:new_islamy/utils/app_strings.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../core/utils/app_constants.dart';
+import '../../../../core/utils/app_pathes.dart';
+import '../../../../core/utils/app_strings.dart';
 
 
 class OnBoardingScreen extends StatelessWidget {

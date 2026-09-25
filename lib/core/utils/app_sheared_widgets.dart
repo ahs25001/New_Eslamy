@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../style/app_text_styles.dart';
+import '../../style/app_text_styles.dart';
 import 'app_pathes.dart';
 import 'app_strings.dart';
 

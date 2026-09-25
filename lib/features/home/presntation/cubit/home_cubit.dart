@@ -1,13 +1,15 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
+import 'package:new_islamy/features/home/presntation/data/models/sura_model.dart';
 
+import '../../../../core/shared_preferences/shared_keys.dart';
+import '../../../../core/shared_preferences/shared_preferences_services.dart';
+import '../../../../core/utils/app_constants.dart';
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  PageController pageController = PageController(
-    initialPage: 0,
-  );
+  PageController pageController = PageController(initialPage: 0);
   HomeCubit() : super(HomeInitial()) {
     loadHadeths();
   }
@@ -50,5 +52,42 @@ class HomeCubit extends Cubit<HomeState> {
         ),
       );
     }
+  }
+
+  void addSuraToMostRecently(int index) {
+    List<int> mostRecentlyIndexes = state.mostRecently!
+        .map((e) => e.index)
+        .toList();
+    mostRecentlyIndexes.removeWhere((element) => element == index);
+    mostRecentlyIndexes.insert(0, index);
+    if (mostRecentlyIndexes.length > 20) {
+      mostRecentlyIndexes.removeAt(mostRecentlyIndexes.length - 1);
+    }
+    SharedPreferencesServices.addListOfStrings(
+      SharedKeys.mostRecently.value,
+      mostRecentlyIndexes.map((e) => e.toString()).toList(),
+    );
+    getMostRecently();
+  }
+
+  void getMostRecently() {
+    List<String> mostRecentlyIndexes =
+        SharedPreferencesServices.getLisOfStrings(
+          SharedKeys.mostRecently.value,
+        );
+    emit(
+      state.copyWith(
+        mostRecently: mostRecentlyIndexes
+            .map(
+              (e) => SuraModel(
+                index: int.parse(e),
+                suraAyatNumber: ayaNumberList[int.parse(e)],
+                suraName: arabicQuranSuras[int.parse(e)],
+                suraNameEnglish: englishQuranSurahs[int.parse(e)],
+              ),
+            )
+            .toList(),
+      ),
+    );
   }
 }

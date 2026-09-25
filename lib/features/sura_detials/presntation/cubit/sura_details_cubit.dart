@@ -1,5 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/services.dart';
+import 'package:new_islamy/core/shared_preferences/shared_preferences_services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../../../core/shared_preferences/shared_keys.dart';
 
 part 'sura_details_state.dart';
 
