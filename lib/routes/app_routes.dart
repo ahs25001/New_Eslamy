@@ -1,23 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:new_islamy/features/hadeth_details/presntation/pages/hadeth_details_screen.dart';
+import 'package:new_islamy/features/splash_screen/presentation/pages/splash_screen.dart';
 import '../features/home/presntation/data/models/hadeth_model.dart';
 import '../features/home/presntation/pages/home_screen.dart';
 import '../features/on_boarding/presentation/pages/on_boarding_screen.dart';
 import '../features/sura_detials/presntation/pages/sura_details_screen.dart';
 abstract class AppRoutes {
-  static const String home = '/';
-  static const String onBoarding = '/f';
+  static const String home = '/home';
+  static const String onBoarding = '/onBoarding';
   static const String suraDetails = '/suraDetails';
   static const String hadethDetails = '/hadethDetails';
+  static const String splashScreen = "/";
 }
 class Rotes {
   static MaterialPageRoute<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
-
-
-      
       case AppRoutes.home:
-
         return MaterialPageRoute(builder: (context) => const HomeScreen());
       case AppRoutes.onBoarding:
         return MaterialPageRoute(
@@ -35,6 +33,8 @@ class Rotes {
             hadethModel: settings.arguments as HadethModel,
           ),
         );
+      case AppRoutes.splashScreen:
+        return MaterialPageRoute(builder: (context) => SplashScreen(),);
       default:
         return MaterialPageRoute(builder: (context) => const ErrorScreen());
     }

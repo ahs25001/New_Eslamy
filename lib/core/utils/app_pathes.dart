@@ -35,4 +35,9 @@ static String timeBackground = 'assets/images/time_background.png';
 static String prayerTimeContainer = "assets/images/prayer_time_conteaner.svg";
 static String morningAzkarImage = 'assets/images/Morning Azkar image.png';
 static String eveningAzkarImage = 'assets/images/Evening Azkar_image.png';
+static String splashScreenBackground ='assets/images/splash_screen_background.png';
+static String appLogo ='assets/images/app_logo.svg';
+static String leftStars = 'assets/images/left_stars.png';
+static String rightStars ='assets/images/right_stars.png';
+static String light = 'assets/images/Glow.png';
 }
